@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiBook</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="title">
+                <h1>¿Desea escanear un libro?</h1>
+            </div>
+            <img id="img2" src="./img/undraw_mobile_photos_psm5.png" alt="imagen de un celular con fotos">
+            <p>Recuerde subir las fotos en orden</p>
+            <div class="inputft">
+                <form action="/uploads" method="post" id="inputft" enctype="multipart/form-data">
+                    <input type="file" id="archivos" name="avatar" multiple />
+                    <button type="submit">
+                        Escanear
+                    </button>
+                </form>   
+            </div>
+        </div>
+    </section>
+    <script src="/app.js"></script>
+</body>
+</html>
