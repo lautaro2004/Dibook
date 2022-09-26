@@ -4,8 +4,8 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const multer = require('multer');
-const { requires } = require("consolidate");
-
+const { requires, react } = require("consolidate");
+const { request } = require("http");
 //Almacenamiento
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -28,23 +28,31 @@ app.get("/", (req, res) => {
 app.get("/scan", (req, res) => {
     res.render("scan")
 })
-app.get("/result", (req, res) => {
-    res.render("result")
+app.get("/resultado", (req, res) => {
+    res.render("resultado")
 })
 //Funciones
 app.post("/upload", (req, res) => {
     upload(req, res, err => {
         fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
-            if (err) return console.log('Este es el error: ' + err);
-            T.recognize(data, "spa", { tessjs_create_pdf:"1" })
+            if (err) return console.log('Este es el error: ' + err); 
+            T.recognize(data, "spa", { logger: (m) => resultado(m) })
             .then(result => {
-                res.send(result.text)
+                fs.writeFile('Resultado.txt', result.text, (error)=> {
+                    if(error){
+                        throw error;
+                    }
+                    console.log('Archivo creado exitosamente')
+                    res.redirect("/dowload");
+                } )
             })
-            .finally(() => T.terminate());
         });
     });
 });
-
+app.get('/dowload', (req, res) => {
+    const file = `${__dirname}/Resultado.txt`
+    res.download(file);
+});
 //Iniciar server
 const PORT = 5000 || process.env.PORT;
 app.listen(PORT, () => {
