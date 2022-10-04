@@ -36,6 +36,9 @@ section{
 #img2{
     width: 80%;
 }
+form{
+    padding: 20px 10px;
+}
 #inputft{
     display: flex;
     width: 80%;
@@ -44,18 +47,53 @@ section{
     justify-content: center;
     align-items: center;
 }
-input{
-    padding: 15px;
-}
-button{
-    display: flex;
-    width: 60%;
+
+label {
+    cursor: pointer;
+    display: block;
+    width: 40%;
     height: 30px;
-    border-radius: 25px;
+    border-radius: 15px;
     justify-content: center;
     background-color: #343A40;
     color: #F8F9FA;
     font-size: 22px;
     border: none;
     text-align: center;
+    margin-bottom: 15px;
+    
+}
+label:hover,
+button:hover{
+    background-color: #33a1fd;
+    transition: background-color 0.5s linear;
+}
+input{
+    display: flex;
+    width: 60%;
+    height: 30px;
+    border-radius: 15px;
+    justify-content: center;
+    background-color: #343A40;
+    color: #F8F9FA;
+    font-size: 22px;
+    border: none;
+    text-align: center;
+    margin-bottom: 15px;
+}
+button{
+    display: flex;
+    width:40%;
+    height: 30px;
+    border-radius: 15px;
+    justify-content: center;
+    background-color: #343A40;
+    color: #F8F9FA;
+    font-size: 22px;
+    border: none;
+    text-align: center;
+}
+button:hover{
+    background-color: #33a1fd;
+    transition: background-color 0.5s linear infinite;
 }
